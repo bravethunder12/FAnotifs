@@ -5,21 +5,28 @@ api.runtime.onMessage.addListener((message, sender, sendResponse) => {
     const { text, filename } = message;
     try {
       const blob = new Blob([text], { type: "text/plain" });
-      const blobUrl = URL.createObjectURL(blob);
-      api.downloads.download({
-        url: blobUrl,
-        filename: filename,
-        saveAs: false,
-        conflictAction: "uniquify"
-      }, () => {
-        if (api.runtime.lastError) {
-          console.error("Download error:", api.runtime.lastError);
-        } else {
-          setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
-        }
-      });
+      const reader = new FileReader();
+      reader.onload = function () {
+        api.downloads.download({
+          url: reader.result,
+          filename: filename,
+          saveAs: false,
+          conflictAction: "uniquify"
+        }, (downloadId) => {
+          if (api.runtime.lastError) {
+            console.error("Download error:", api.runtime.lastError);
+          } else {
+            console.log("Download started:", downloadId);
+          }
+        });
+      };
+      reader.onerror = function (err) {
+        console.error("FileReader error:", err);
+      };
+      reader.readAsDataURL(blob);
     } catch (err) {
       console.error("saveFile error:", err);
     }
   }
+  return true;
 });
