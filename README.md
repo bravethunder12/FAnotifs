@@ -1,5 +1,6 @@
 # FAnotifs
-small browser extension to archive your FurAffinity notifications
+This is a small browser extension to archive your FurAffinity notifications.
+Intended for Firefox Developer Edition browser, but probably works in Chrome too.
 
 * Press `i` to save **watch notifications**
 * Press `p` to save **favorite notifications**
@@ -12,7 +13,7 @@ small browser extension to archive your FurAffinity notifications
   * Go to: https://www.furaffinity.net/controls/site-settings/
   * Set the Date Format to Full (NOT Fuzzy) 
 
-* Works while on this page:
+* This extension works while on this page:
   https://www.furaffinity.net/msg/others/
 
 ## Installation (Temporary)
