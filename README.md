@@ -1,6 +1,9 @@
 # FAnotifs
 This is a small browser extension to archive your FurAffinity notifications.
-Intended for Firefox Developer Edition browser, but probably works in Chrome too.
+
+Intended for Firefox (also works in Chrome but with worse filename)
+
+I created this for my own personal use, but I guess you can investigate similar code for other notifications like submissions and journals.
 
 * Press `i` to save **watch notifications**
 * Press `p` to save **favorite notifications**
