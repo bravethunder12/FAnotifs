@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "FA Notif Saver",
   "description": "Save a record of notifs from Notes page. i=watches, p=favs",
   "version": "1.0",
@@ -9,15 +9,14 @@
   ],
   "content_scripts": [
     {
-      "matches": ["https://www.furaffinity.net/msg/others/*"],
+      "matches": ["https://www.furaffinity.net/msg/others*"],
       "js": ["content.js"]
     }
   ],
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "service_worker": "background.js"
   },
-  "browser_action": {
+  "action": {
     "default_icon": {
       "128": "icon128.png"
     },
@@ -25,5 +24,8 @@
   },
   "icons": {
     "128": "icon128.png"
-  }
+  },
+  "host_permissions": [
+    "https://www.furaffinity.net/*"
+  ]
 }
